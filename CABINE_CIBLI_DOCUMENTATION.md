@@ -14,7 +14,7 @@
 ## 🚀 Utilisation
 
 ```bash
-python3 cabine_cibli.py
+python3 ats_cibli.py
 ```
 
 **Résultat :**

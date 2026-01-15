@@ -37,7 +37,7 @@ print("="*80)
 
 # Configuration - Modifier ces variables selon vos besoins
 SOURCE_FILTER = "cabine cibli job"  # ← SOURCE À ANALYSER
-DATE_START = "2026-01-14"           # ← DATE DE DÉBUT (YYYY-MM-DD)
+DATE_START = "2025-09-11"           # ← DATE DE DÉBUT (YYYY-MM-DD)
 DATE_END = "2026-01-14"             # ← DATE DE FIN (YYYY-MM-DD)
 TOP_N_CLIENTS = 15                  # ← Nombre de top clients à afficher
 TOP_N_CAMPAIGNS = 15                # ← Nombre de top campagnes à afficher

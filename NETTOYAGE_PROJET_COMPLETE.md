@@ -71,7 +71,7 @@ Le projet a été **complètement réorganisé** avec un seul script unique qui 
 
 ### ✅ Fait en une seule exécution:
 ```bash
-python3 cabine_cibli.py
+python3 ats_cibli.py
 ```
 
 ### ✅ Génère:
@@ -121,7 +121,7 @@ python3 update_api_data.py
 
 **APRÈS (simple)** :
 ```bash
-python3 cabine_cibli.py
+python3 ats_cibli.py
 # Tout est fait en une seule commande!
 ```
 
