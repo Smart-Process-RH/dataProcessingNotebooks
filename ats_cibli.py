@@ -42,7 +42,7 @@ DATE_END = "2026-01-14"             # ← DATE DE FIN (YYYY-MM-DD)
 CLIENT_FILTER = "all"               # ← CHOIX CLIENT: "all" pour tous, ou nom spécifique
                                     # Clients disponibles (voir ci-dessous)
 TOP_N_CLIENTS = 15                  # ← Nombre de top clients à afficher
-TOP_N_CAMPAIGNS = 15                # ← Nombre de top campagnes à afficher
+TOP_N_CAMPAIGNS = 40                # ← Nombre de top campagnes à afficher
 
 # Configuration API
 API_URL = "https://api.smart-process-rh.com/v1"
@@ -410,13 +410,13 @@ for month in sorted(df_filtered['month'].dropna().unique()):
     month_str = str(month)
     month_cvs = df_month['applicant_id'].nunique()
     month_apps = len(df_month)
-    month_clients = df_month['campaign_id'].nunique()
+    month_clients_created = df_month['client_name'].nunique()
     month_campaigns = df_month['campaign_name'].nunique()
 
     print(f"   📅 {month_str}:")
     print(f"      • CVs: {month_cvs}")
     print(f"      • Candidatures: {month_apps}")
-    print(f"      • Clients: {month_clients}")
+    print(f"      • Clients créés: {month_clients_created}")
     print(f"      • Campagnes créées: {month_campaigns}")
 
 # ============================================================================
@@ -461,10 +461,21 @@ print("="*80)
 # Grouper par campaign_name pour compter les candidatures
 campaign_counts = df_filtered['campaign_name'].value_counts().head(TOP_N_CAMPAIGNS)
 
+# Créer un mapping campaign_name -> client_name (le client principal pour cette campagne)
+campaign_to_client = {}
+for campaign in campaign_counts.index:
+    client = df_filtered[df_filtered['campaign_name'] == campaign]['client_name'].mode()
+    if len(client) > 0:
+        campaign_to_client[campaign] = client[0]
+    else:
+        campaign_to_client[campaign] = 'Unknown'
+
 print(f"\n   Top {min(TOP_N_CAMPAIGNS, len(campaign_counts))} campagnes:\n")
 for idx, (campaign, count) in enumerate(campaign_counts.items(), 1):
     percentage = (count / total_applications) * 100
+    client = campaign_to_client.get(campaign, 'Unknown')
     print(f"   {idx:2d}. {campaign}: {count} candidatures ({percentage:.1f}%)")
+    print(f"       → Client: {client}")
 
 # ============================================================================
 # 💾 ÉTAPE 10 : EXPORT EXCEL
@@ -551,19 +562,22 @@ try:
 
     ws['A1'] = "Rang"
     ws['B1'] = "Campagne (Titre)"
-    ws['C1'] = "Candidatures"
-    ws['D1'] = "%"
-    for col in ['A', 'B', 'C', 'D']:
+    ws['C1'] = "Client"
+    ws['D1'] = "Candidatures"
+    ws['E1'] = "%"
+    for col in ['A', 'B', 'C', 'D', 'E']:
         ws[f'{col}1'].fill = header_fill
         ws[f'{col}1'].font = header_font
 
     for idx, (campaign, count) in enumerate(campaign_counts.items(), 1):
         percentage = (count / total_applications) * 100
+        client = campaign_to_client.get(campaign, 'Unknown')
         ws[f'A{idx+1}'] = idx
         ws[f'B{idx+1}'] = campaign
-        ws[f'C{idx+1}'] = count
-        ws[f'D{idx+1}'] = f"{percentage:.1f}%"
-        for col in ['A', 'B', 'C', 'D']:
+        ws[f'C{idx+1}'] = client
+        ws[f'D{idx+1}'] = count
+        ws[f'E{idx+1}'] = f"{percentage:.1f}%"
+        for col in ['A', 'B', 'C', 'D', 'E']:
             ws[f'{col}{idx+1}'].border = border
 
     # ===== FEUILLE 4: STATUTS =====
@@ -591,7 +605,7 @@ try:
     ws['A1'] = "Mois"
     ws['B1'] = "CVs"
     ws['C1'] = "Candidatures"
-    ws['D1'] = "Clients"
+    ws['D1'] = "Clients créés"
     ws['E1'] = "Campagnes créées"
     for col in ['A', 'B', 'C', 'D', 'E']:
         ws[f'{col}1'].fill = header_fill
@@ -603,13 +617,13 @@ try:
         month_str = str(month)
         month_cvs = df_month['applicant_id'].nunique()
         month_apps = len(df_month)
-        month_clients = df_month['campaign_id'].nunique()
+        month_clients_created = df_month['client_name'].nunique()
         month_campaigns = df_month['campaign_name'].nunique()
 
         ws[f'A{row}'] = month_str
         ws[f'B{row}'] = month_cvs
         ws[f'C{row}'] = month_apps
-        ws[f'D{row}'] = month_clients
+        ws[f'D{row}'] = month_clients_created
         ws[f'E{row}'] = month_campaigns
         for col in ['A', 'B', 'C', 'D', 'E']:
             ws[f'{col}{row}'].border = border
