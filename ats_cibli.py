@@ -39,6 +39,8 @@ print("="*80)
 SOURCE_FILTER = "cabine cibli job"  # ← SOURCE À ANALYSER
 DATE_START = "2025-09-11"           # ← DATE DE DÉBUT (YYYY-MM-DD)
 DATE_END = "2026-01-14"             # ← DATE DE FIN (YYYY-MM-DD)
+CLIENT_FILTER = "all"               # ← CHOIX CLIENT: "all" pour tous, ou nom spécifique
+                                    # Clients disponibles (voir ci-dessous)
 TOP_N_CLIENTS = 15                  # ← Nombre de top clients à afficher
 TOP_N_CAMPAIGNS = 15                # ← Nombre de top campagnes à afficher
 
@@ -61,6 +63,7 @@ os.makedirs("backups", exist_ok=True)
 print("\n✅ Configuration chargée:")
 print(f"   Source filtrée: {SOURCE_FILTER}")
 print(f"   Période: {DATE_START} à {DATE_END}")
+print(f"   Filtre client: {CLIENT_FILTER}")
 print(f"   Top clients: {TOP_N_CLIENTS}")
 print(f"   Top campagnes: {TOP_N_CAMPAIGNS}")
 
@@ -272,6 +275,61 @@ else:
     df_filtered['client_name'] = df_filtered['campaign_name']
 
 print(f"   ✅ Noms enrichis")
+
+# ============================================================================
+# 🏢 ÉTAPE 3.5 : APPLICATION DU FILTRE CLIENT
+# ============================================================================
+
+print("\n" + "="*80)
+print("🏢 ÉTAPE 3.5: SÉLECTION ET FILTRAGE CLIENT")
+print("="*80)
+
+# Récupérer la liste unique des clients
+unique_clients = sorted([c for c in df_filtered['client_name'].unique() if c != 'Unknown Client'])
+
+# Créer/Mettre à jour le fichier de commentaire avec la liste des clients
+clients_comment_file = 'CLIENTS_DISPONIBLES.txt'
+with open(clients_comment_file, 'w', encoding='utf-8') as f:
+    f.write("# ════════════════════════════════════════════════════════════════════════════════\n")
+    f.write("# LISTE DES CLIENTS DISPONIBLES - MIS À JOUR AUTOMATIQUEMENT\n")
+    f.write(f"# Généré le: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+    f.write("# ════════════════════════════════════════════════════════════════════════════════\n\n")
+    f.write(f"# Total: {len(unique_clients)} clients disponibles\n\n")
+    f.write("# 📋 LISTE DES CLIENTS:\n")
+    f.write("# " + "─" * 76 + "\n")
+    for idx, client in enumerate(unique_clients, 1):
+        f.write(f"#   {idx:2d}. {client}\n")
+    f.write("# " + "─" * 76 + "\n\n")
+    f.write("# 🔧 UTILISATION DANS LE SCRIPT:\n")
+    f.write("#   CLIENT_FILTER = \"all\"  # Pour analyser TOUS les clients\n")
+    f.write("#   CLIENT_FILTER = \"NOM_EXACT_DU_CLIENT\"  # Pour un client spécifique\n\n")
+    f.write(f"# ℹ️  Exemple (basé sur les clients actuels):\n")
+    if unique_clients:
+        f.write(f"#   CLIENT_FILTER = \"{unique_clients[0]}\"  # Pour le 1er client\n")
+
+print(f"\n   ✅ {len(unique_clients)} clients trouvés")
+print(f"   ✅ Liste sauvegardée dans: {clients_comment_file}")
+
+# Afficher la liste des clients
+print(f"\n   📋 Clients disponibles:\n")
+for idx, client in enumerate(unique_clients, 1):
+    client_count = len(df_filtered[df_filtered['client_name'] == client])
+    print(f"      {idx:2d}. {client} ({client_count} candidatures)")
+
+# Appliquer le filtre client
+print(f"\n   Filtrage par client: '{CLIENT_FILTER}'...")
+if CLIENT_FILTER.lower() != "all":
+    if CLIENT_FILTER not in unique_clients:
+        print(f"\n   ❌ ERREUR: Client '{CLIENT_FILTER}' non trouvé!")
+        print(f"\n   Clients disponibles:")
+        for client in unique_clients:
+            print(f"      • {client}")
+        print("\n   ❌ Arrêt du script.")
+        exit(1)
+    df_filtered = df_filtered[df_filtered['client_name'] == CLIENT_FILTER].copy()
+    print(f"   ✅ Filtrage appliqué: {len(df_filtered)} candidatures pour '{CLIENT_FILTER}'")
+else:
+    print(f"   ✅ Tous les clients sélectionnés ({len(unique_clients)} clients, {len(df_filtered)} candidatures)")
 
 # ============================================================================
 # 📊 ÉTAPE 4 : STATISTIQUES GLOBALES
