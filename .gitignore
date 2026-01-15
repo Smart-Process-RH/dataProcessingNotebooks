@@ -1,1 +1,33 @@
 /.DS_Store
+
+# Environnement virtuel Python
+venv/
+env/
+ENV/
+.venv/
+
+# Fichiers compilés Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Dossiers de données (sauvegarde, export, stats)
+backups/
+exports/
+stats/
+
+# IDE et outils
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Fichiers temporaires
+*.tmp
+*.bak
+*.orig
+*.rej
