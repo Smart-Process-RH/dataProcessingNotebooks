@@ -411,11 +411,13 @@ for month in sorted(df_filtered['month'].dropna().unique()):
     month_cvs = df_month['applicant_id'].nunique()
     month_apps = len(df_month)
     month_clients = df_month['campaign_id'].nunique()
+    month_campaigns = df_month['campaign_name'].nunique()
 
     print(f"   📅 {month_str}:")
     print(f"      • CVs: {month_cvs}")
     print(f"      • Candidatures: {month_apps}")
     print(f"      • Clients: {month_clients}")
+    print(f"      • Campagnes créées: {month_campaigns}")
 
 # ============================================================================
 # 🏢 ÉTAPE 7 : TOP CLIENTS
@@ -583,11 +585,60 @@ try:
             for col in ['A', 'B', 'C']:
                 ws[f'{col}{idx+1}'].border = border
 
+    # ===== FEUILLE 5: STATISTIQUES MENSUELLES =====
+    ws = wb.create_sheet("📅 Statistiques Mensuelles", 4 if 'status' in df_filtered.columns else 3)
+
+    ws['A1'] = "Mois"
+    ws['B1'] = "CVs"
+    ws['C1'] = "Candidatures"
+    ws['D1'] = "Clients"
+    ws['E1'] = "Campagnes créées"
+    for col in ['A', 'B', 'C', 'D', 'E']:
+        ws[f'{col}1'].fill = header_fill
+        ws[f'{col}1'].font = header_font
+
+    row = 2
+    for month in sorted(df_filtered['month'].dropna().unique()):
+        df_month = df_filtered[df_filtered['month'] == month]
+        month_str = str(month)
+        month_cvs = df_month['applicant_id'].nunique()
+        month_apps = len(df_month)
+        month_clients = df_month['campaign_id'].nunique()
+        month_campaigns = df_month['campaign_name'].nunique()
+
+        ws[f'A{row}'] = month_str
+        ws[f'B{row}'] = month_cvs
+        ws[f'C{row}'] = month_apps
+        ws[f'D{row}'] = month_clients
+        ws[f'E{row}'] = month_campaigns
+        for col in ['A', 'B', 'C', 'D', 'E']:
+            ws[f'{col}{row}'].border = border
+        row += 1
+
+    # ===== FEUILLE 6: DONNÉES BRUTES FILTRÉES =====
+    ws = wb.create_sheet("📋 Données Brutes", 5 if 'status' in df_filtered.columns else 4)
+
+    # Préparer les colonnes à afficher
+    display_columns = ['created_at', 'applicant_id', 'campaign_name', 'client_name', 'status']
+    available_columns = [col for col in display_columns if col in df_filtered.columns]
+
+    # En-têtes
+    for col_idx, col_name in enumerate(available_columns, 1):
+        cell = ws.cell(row=1, column=col_idx)
+        cell.value = col_name.replace('_', ' ').title()
+        cell.fill = header_fill
+        cell.font = header_font
+
+    # Données
+    for row_idx, (_, row_data) in enumerate(df_filtered[available_columns].iterrows(), 2):
+        for col_idx, col_name in enumerate(available_columns, 1):
+            cell = ws.cell(row=row_idx, column=col_idx)
+            cell.value = row_data[col_name]
+            cell.border = border
+
     # Ajuster les largeurs
-    for ws_name in wb.sheetnames:
-        ws = wb[ws_name]
-        for col in ['A', 'B', 'C', 'D']:
-            ws.column_dimensions[col].width = 20
+    for col_idx, col_name in enumerate(available_columns, 1):
+        ws.column_dimensions[get_column_letter(col_idx)].width = 25
 
     # Sauvegarder
     excel_file = f"exports/cabine_cibli_analytics_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
