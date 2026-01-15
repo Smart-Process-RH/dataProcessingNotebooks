@@ -342,10 +342,12 @@ print("="*80)
 total_cvs = df_filtered['applicant_id'].nunique()
 total_applications = len(df_filtered)
 total_clients = df_filtered['campaign_id'].nunique()
+total_campaigns = df_filtered['campaign_name'].nunique()
 
 print(f"\n   ✓ Nombre total de CV faits: {total_cvs}")
 print(f"   ✓ Nombre total de candidatures: {total_applications}")
 print(f"   ✓ Nombre de clients: {total_clients}")
+print(f"   ✓ Nombre de campagnes créées: {total_campaigns}")
 print(f"\n   ✓ Période: {DATE_START} à {DATE_END}")
 print(f"   ✓ Source: {SOURCE_FILTER}")
 
@@ -613,6 +615,7 @@ Période:               {DATE_START} à {DATE_END}
 CVs:                   {total_cvs}
 Candidatures:          {total_applications}
 Clients:               {total_clients}
+Campagnes créées:      {total_campaigns}
 
 📁 Fichiers générés:
    ✅ stats/applications/raw_applications.csv
