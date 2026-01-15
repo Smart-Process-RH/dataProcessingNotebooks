@@ -1,0 +1,164 @@
+================================================================================
+             📊 STATS_CABINES.PY - GUIDE DE DÉMARRAGE RAPIDE
+================================================================================
+Version     : 1.0
+Created     : 2026-01-15
+Repository  : Zaidoudou/dataProcessingNotebooks
+Branch      : statysics-by-vlad
+Creator     : Vlad Kunitsyn
+================================================================================
+🚀 DÉMARRAGE RAPIDE (2 étapes)
+================================================================================
+ÉTAPE 1 : Accéder au répertoire
+    cd /home/vladkunitsyn/PycharmProjects/dataProcessingNotebooks
+ÉTAPE 2 : Exécuter le script
+    python3 stats/stats_cabines.py
+RÉSULTAT : Fichier Excel généré dans exports/cabine_analytics_*.xlsx
+================================================================================
+⚙️ CONFIGURATION (Modifier avant l'exécution)
+================================================================================
+Ouvrir le fichier : stats/stats_cabines.py
+Modifier la section à la ligne 21-35 :
+    ENVIRONMENT = 'STAGING'              # 'STAGING' ou 'PRODUCTION'
+    DATE_START = '2025-09-01'            # Format : YYYY-MM-DD
+    DATE_END = '2026-01-14'              # Format : YYYY-MM-DD
+    SHOW_DETAILS = True                  # Détails ou résumé
+    COMPARE_ENVIRONMENTS = False         # Comparer STAGING vs PROD
+    EXPORT_TO_EXCEL = True               # Générer Excel
+================================================================================
+📖 DOCUMENTATION COMPLÈTE
+================================================================================
+Fichier : stats/README_STATS_CABINES.md
+Contient :
+    ✓ Installation
+    ✓ Configuration détaillée
+    ✓ Utilisation avancée
+    ✓ Endpoints API
+    ✓ Résultats générés
+    ✓ Exemples d'utilisation
+    ✓ Guide de dépannage
+================================================================================
+⚡ OPTIONS DE DÉMARRAGE
+================================================================================
+Option 1 : Menu Interactif
+    ./stats/quickstart.sh
+Option 2 : Script Direct
+    python3 stats/stats_cabines.py
+Option 3 : Avec Configuration Personnalisée
+    1. Éditer stats/stats_cabines.py (ligne 23-35)
+    2. python3 stats/stats_cabines.py
+================================================================================
+📋 EXEMPLES DE CONFIGURATION
+================================================================================
+Fichier : stats/config_examples.py
+Contient 8 configurations prêtes à l'emploi :
+    1. Standard (par défaut)
+    2. Mensuel (Novembre 2025)
+    3. Trimestriel (Q4 2025)
+    4. Production (quand disponible)
+    5. Comparaison STAGING vs PROD
+    6. Mode résumé rapide
+    7. Test sans export
+    8. Derniers 7 jours
+================================================================================
+📊 RÉSULTATS ATTENDUS
+================================================================================
+Console :
+    ✅ Configuration chargée
+    ✅ Toutes les données récupérées
+    ✅ Analyse terminée
+    ✅ Fichier Excel généré
+Fichier Excel (exports/cabine_analytics_*.xlsx) :
+    • 5 feuilles d'analyse
+    • Métriques principales
+    • Données détaillées
+    • Évolution quotidienne
+    • Statistiques par cabine
+Durée : 5-10 secondes
+================================================================================
+🔍 POINTS CLÉS
+================================================================================
+3 MÉTRIQUES SUIVIES :
+    • CV créés
+    • CV imprimés
+    • Offres consultées
+6 SOURCES DE DONNÉES :
+    • Cabines (booths)
+    • Événements
+    • KPIs
+    • Timeline
+    • Sessions
+    • Interviews
+8 ÉTAPES D'ANALYSE :
+    1. Récupération API
+    2. Filtrage & enrichissement
+    3. Statistiques principales
+    4. Analyse par cabine
+    5. Timeline quotidienne
+    6. Comparaison STAGING/PROD
+    7. Export Excel
+    8. Message de fin
+================================================================================
+❓ DÉPANNAGE COURANT
+================================================================================
+ERREUR : "No module named 'pandas'"
+SOLUTION : pip install --break-system-packages pandas openpyxl requests
+ERREUR : "Connexion refusée"
+SOLUTION : Vérifier la connexion internet et que l'API est disponible
+ERREUR : "Code 401"
+SOLUTION : Vérifier les clés API à la ligne 42-46
+ERREUR : "Dossier exports n'existe pas"
+SOLUTION : mkdir -p exports/ (créé automatiquement normalement)
+================================================================================
+📁 FICHIERS FOURNIS
+================================================================================
+stats/stats_cabines.py              ← Script principal (423 lignes)
+stats/README_STATS_CABINES.md       ← Documentation complète
+stats/config_examples.py            ← Exemples de configuration
+stats/quickstart.sh                 ← Menu de démarrage rapide
+stats/HOW_TO_USE.txt               ← Ce fichier
+================================================================================
+✨ CARACTÉRISTIQUES
+================================================================================
+✅ Entièrement automatisé
+✅ Configuration flexible
+✅ Support STAGING et PRODUCTION
+✅ Gestion d'erreurs robuste
+✅ Documentation complète
+✅ Prêt pour la production
+================================================================================
+🎯 CAS D'USAGE
+================================================================================
+CAS 1 : Rapport Mensuel Standard
+    DATE_START = '2025-11-01'
+    DATE_END = '2025-11-30'
+    EXPORT_TO_EXCEL = True
+    → Génère rapport Novembre 2025
+CAS 2 : Vérifier les Données
+    EXPORT_TO_EXCEL = False
+    → Affiche les données sans générer Excel
+CAS 3 : Comparer Deux Environnements
+    COMPARE_ENVIRONMENTS = True
+    ENVIRONMENT = 'STAGING'
+    → Compare STAGING vs PRODUCTION (quand disponible)
+CAS 4 : Analyser une Période Spécifique
+    DATE_START = '2025-10-01'
+    DATE_END = '2025-10-31'
+    → Génère rapport Octobre 2025
+================================================================================
+📞 SUPPORT
+================================================================================
+Repository : Zaidoudou/dataProcessingNotebooks
+Branch     : statysics-by-vlad
+Creator    : Vlad Kunitsyn
+Created    : 2026-01-15
+Pour plus d'informations, consultez :
+    → stats/README_STATS_CABINES.md
+    → stats/config_examples.py
+================================================================================
+✅ VOUS ÊTES PRÊT !
+================================================================================
+Commencez par :
+    python3 stats/stats_cabines.py
+Et accédez à votre rapport Excel dans le dossier exports/ !
+================================================================================

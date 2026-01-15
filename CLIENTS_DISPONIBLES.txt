@@ -1,0 +1,62 @@
+# ════════════════════════════════════════════════════════════════════════════════
+# LISTE DES CLIENTS DISPONIBLES - MIS À JOUR AUTOMATIQUEMENT
+# Généré le: 2026-01-15 14:47:48
+# ════════════════════════════════════════════════════════════════════════════════
+
+# Total: 45 clients disponibles
+
+# 📋 LISTE DES CLIENTS:
+# ────────────────────────────────────────────────────────────────────────────
+#    1. Abalone Rezé
+#    2. BZB Atlantis
+#    3. Burger King
+#    4. CRIT INTERIM - Cabinet Experts & Cadres (Saint-Herblain)
+#    5. CRIT INTERIM - Direction Régionale CRIT BPDL
+#    6. CRIT INTERIM - Rezé
+#    7. CRIT INTERIM - Saint-Herblain
+#    8. CRIT INTERIM Aéronautique
+#    9. CRIT INTERIM Région Ouest > CRIT INTERIM - Cabinet Experts & Cadres (Saint-Herblain)
+#   10. CRIT INTERIM Région Ouest > CRIT INTERIM - Rezé
+#   11. CRIT INTERIM Région Ouest > CRIT INTERIM - Saint-Herblain
+#   12. Calzedonia - Centre commercial Atlantis
+#   13. Cash&Repair Atlantis
+#   14. Celio
+#   15. Chantelle Atlantis
+#   16. Courir Atlantis
+#   17. DECATHLON Nantes Atlantis
+#   18. Du bruit dans la cuisine
+#   19. E.LECLERC ATLANTIS
+#   20. E.LECLERC SAINT GREGOIRE
+#   21. Etam Lingerie
+#   22. Evoe Group 
+#   23. Flying Tiger Atlantis
+#   24. Franck Provost Atlantis
+#   25. Fuxia
+#   26. Fuxia Atlantis
+#   27. GEOX Atlantis
+#   28. Histoire d'Or > Histoire d'Or Atlantis
+#   29. LONCHAMP
+#   30. La Boutique du Coiffeur Atlantis
+#   31. MAISON JAMET
+#   32. Madagascar
+#   33. Morgan Atlantis
+#   34. Okaïdi Atlantis
+#   35. Pimkie Atlantis
+#   36. Promod - Centre commercial Atlantis
+#   37. RAS Intérim - Nantes
+#   38. Ramen Ya
+#   39. Rituals Atlantis
+#   40. Réseau Chauffalia
+#   41. SYNERGIE Château Gontier
+#   42. Saint Algue > Saint Algue Atlantis
+#   43. Smart Profil
+#   44. Starbucks Atlantis
+#   45. Yves Rocher > Yves Rocher - Centre commercial Atlantis
+# ────────────────────────────────────────────────────────────────────────────
+
+# 🔧 UTILISATION DANS LE SCRIPT:
+#   CLIENT_FILTER = "all"  # Pour analyser TOUS les clients
+#   CLIENT_FILTER = "NOM_EXACT_DU_CLIENT"  # Pour un client spécifique
+
+# ℹ️  Exemple (basé sur les clients actuels):
+#   CLIENT_FILTER = "Abalone Rezé"  # Pour le 1er client
