@@ -15,14 +15,12 @@ Version: 3.0
 
 import requests
 import pandas as pd
-import numpy as np
-import json
 import warnings
 import os
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 from openpyxl import Workbook
-from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+from openpyxl.styles import Font, PatternFill, Border, Side
 from openpyxl.utils import get_column_letter
 
 warnings.filterwarnings('ignore')
@@ -38,8 +36,8 @@ print("="*80)
 # Configuration - Modifier ces variables selon vos besoins
 SOURCE_FILTER = "cabine cibli job"  # ← SOURCE À ANALYSER
 DATE_START = "2025-09-11"           # ← DATE DE DÉBUT (YYYY-MM-DD)
-DATE_END = "2026-01-14"             # ← DATE DE FIN (YYYY-MM-DD)
-CLIENT_FILTER = "all"               # ← CHOIX CLIENT: "all" pour tous, ou nom spécifique
+DATE_END = "2026-01-17"             # ← DATE DE FIN (YYYY-MM-DD)
+CLIENT_FILTER = "CRIT INTERIM"               # ← CHOIX CLIENT: "all" pour tous, ou nom spécifique
                                     # Clients disponibles (voir ci-dessous)
 TOP_N_CLIENTS = 15                  # ← Nombre de top clients à afficher
 TOP_N_CAMPAIGNS = 40                # ← Nombre de top campagnes à afficher
@@ -138,12 +136,10 @@ print("\n" + "="*80)
 print("🔍 ÉTAPE 3: FILTRAGE ET ENRICHISSEMENT")
 print("="*80)
 
-# Convertir les dates et supprimer la timezone
-applications_df['created_at'] = pd.to_datetime(
-    applications_df['created_at'],
-    errors='coerce',
-    utc=True
-).dt.tz_localize(None)
+# Convertir les dates
+applications_df['created_at'] = pd.to_datetime(applications_df['created_at'], errors='coerce')
+# Normaliser aux jours
+applications_df['created_at'] = applications_df['created_at'].apply(lambda x: pd.Timestamp(x.date()) if pd.notna(x) else x)
 
 # Filtrer par source
 print(f"\n   Filtrage par source: '{SOURCE_FILTER}'...")
@@ -319,15 +315,24 @@ for idx, client in enumerate(unique_clients, 1):
 # Appliquer le filtre client
 print(f"\n   Filtrage par client: '{CLIENT_FILTER}'...")
 if CLIENT_FILTER.lower() != "all":
-    if CLIENT_FILTER not in unique_clients:
-        print(f"\n   ❌ ERREUR: Client '{CLIENT_FILTER}' non trouvé!")
+    # Recherche avec correspondance partielle (case-insensitive)
+    matching_clients = [c for c in unique_clients if CLIENT_FILTER.lower() in c.lower()]
+
+    if not matching_clients:
+        print(f"\n   ❌ ERREUR: Aucun client ne correspond à '{CLIENT_FILTER}'!")
         print(f"\n   Clients disponibles:")
         for client in unique_clients:
             print(f"      • {client}")
         print("\n   ❌ Arrêt du script.")
         exit(1)
-    df_filtered = df_filtered[df_filtered['client_name'] == CLIENT_FILTER].copy()
-    print(f"   ✅ Filtrage appliqué: {len(df_filtered)} candidatures pour '{CLIENT_FILTER}'")
+
+    # Filtrer par tous les clients correspondants
+    df_filtered = df_filtered[df_filtered['client_name'].isin(matching_clients)].copy()
+    print(f"   ✅ Filtrage appliqué: {len(matching_clients)} client(s) trouvé(s)")
+    for client in matching_clients:
+        client_count = len(df_filtered[df_filtered['client_name'] == client])
+        print(f"      • {client} ({client_count} candidatures)")
+    print(f"   ✅ Total: {len(df_filtered)} candidatures")
 else:
     print(f"   ✅ Tous les clients sélectionnés ({len(unique_clients)} clients, {len(df_filtered)} candidatures)")
 
@@ -360,7 +365,7 @@ print("📈 ÉTAPE 5: STATISTIQUES PAR PÉRIODE")
 print("="*80)
 
 # Convertir en période mensuelle
-df_filtered['month'] = df_filtered['created_at'].dt.to_period('M')
+df_filtered['month'] = df_filtered['created_at'].dt.strftime('%Y-%m')
 
 # Stats globales
 print("\n   1️⃣ Sauvegarde des stats globales...")
@@ -443,6 +448,7 @@ print("\n" + "="*80)
 print("📊 RÉPARTITION PAR STATUT")
 print("="*80)
 
+status_dist = None
 if 'status' in df_filtered.columns:
     status_dist = df_filtered['status'].value_counts()
     print()
@@ -581,7 +587,7 @@ try:
             ws[f'{col}{idx+1}'].border = border
 
     # ===== FEUILLE 4: STATUTS =====
-    if 'status' in df_filtered.columns:
+    if status_dist is not None and 'status' in df_filtered.columns:
         ws = wb.create_sheet("📊 Statuts", 3)
 
         ws['A1'] = "Statut"
@@ -632,27 +638,167 @@ try:
     # ===== FEUILLE 6: DONNÉES BRUTES FILTRÉES =====
     ws = wb.create_sheet("📋 Données Brutes", 5 if 'status' in df_filtered.columns else 4)
 
-    # Préparer les colonnes à afficher
-    display_columns = ['created_at', 'applicant_id', 'campaign_name', 'client_name', 'status']
-    available_columns = [col for col in display_columns if col in df_filtered.columns]
+    # Préparer les colonnes à afficher (toutes les colonnes disponibles)
+    all_columns = df_filtered.columns.tolist()
+    # Exclure les colonnes internes
+    exclude_cols = ['month']
+    display_columns = [col for col in all_columns if col not in exclude_cols]
 
     # En-têtes
-    for col_idx, col_name in enumerate(available_columns, 1):
+    for col_idx, col_name in enumerate(display_columns, 1):
         cell = ws.cell(row=1, column=col_idx)
         cell.value = col_name.replace('_', ' ').title()
         cell.fill = header_fill
         cell.font = header_font
 
     # Données
-    for row_idx, (_, row_data) in enumerate(df_filtered[available_columns].iterrows(), 2):
-        for col_idx, col_name in enumerate(available_columns, 1):
+    for row_idx, (_, row_data) in enumerate(df_filtered[display_columns].iterrows(), 2):
+        for col_idx, col_name in enumerate(display_columns, 1):
             cell = ws.cell(row=row_idx, column=col_idx)
-            cell.value = row_data[col_name]
+            value = row_data[col_name]
+            # Convertir les types incompatibles
+            try:
+                if pd.isna(value):
+                    cell.value = ""
+                elif isinstance(value, (pd.Timestamp, pd.Timedelta, pd.Period)):
+                    cell.value = str(value)
+                elif isinstance(value, (list, dict)):
+                    cell.value = str(value)
+                elif hasattr(value, '__len__') and not isinstance(value, str):
+                    # Gérer les arrays et autres séquences
+                    cell.value = str(value)
+                else:
+                    cell.value = value
+            except:
+                cell.value = str(value)
             cell.border = border
 
     # Ajuster les largeurs
-    for col_idx, col_name in enumerate(available_columns, 1):
-        ws.column_dimensions[get_column_letter(col_idx)].width = 25
+    for col_idx, col_name in enumerate(display_columns, 1):
+        ws.column_dimensions[get_column_letter(col_idx)].width = 20
+
+    # ===== FEUILLE 7: ANALYSE PAR CLIENT =====
+    ws = wb.create_sheet("🏢 Analyse Clients")
+
+    ws['A1'] = "Client"
+    ws['B1'] = "CVs"
+    ws['C1'] = "Candidatures"
+    ws['D1'] = "Campagnes"
+    ws['E1'] = "Status New"
+    ws['F1'] = "Status Denied"
+    ws['G1'] = "Status On Hold"
+    ws['H1'] = "Status Appointment"
+    for col in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']:
+        ws[f'{col}1'].fill = header_fill
+        ws[f'{col}1'].font = header_font
+
+    row = 2
+    for client in sorted(df_filtered['client_name'].unique()):
+        df_client = df_filtered[df_filtered['client_name'] == client]
+
+        ws[f'A{row}'] = str(client) if client is not None else "Unknown"
+        ws[f'B{row}'] = int(df_client['applicant_id'].nunique())
+        ws[f'C{row}'] = int(len(df_client))
+        ws[f'D{row}'] = int(df_client['campaign_name'].nunique())
+
+        # Statuts - conversion NumPy
+        try:
+            ws[f'E{row}'] = len(df_client[df_client['status'] == 'new']) if 'status' in df_client.columns else 0
+            ws[f'F{row}'] = len(df_client[df_client['status'] == 'denied']) if 'status' in df_client.columns else 0
+            ws[f'G{row}'] = len(df_client[df_client['status'] == 'on_hold']) if 'status' in df_client.columns else 0
+            ws[f'H{row}'] = len(df_client[df_client['status'] == 'appointment_taken']) if 'status' in df_client.columns else 0
+        except:
+            ws[f'E{row}'] = 0
+            ws[f'F{row}'] = 0
+            ws[f'G{row}'] = 0
+            ws[f'H{row}'] = 0
+
+        for col in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']:
+            ws[f'{col}{row}'].border = border
+        row += 1
+
+    # ===== FEUILLE 8: ANALYSE PAR CAMPAGNE =====
+    ws = wb.create_sheet("🎯 Analyse Campagnes")
+
+    ws['A1'] = "Campagne"
+    ws['B1'] = "Client"
+    ws['C1'] = "CVs"
+    ws['D1'] = "Candidatures"
+    ws['E1'] = "Status New"
+    ws['F1'] = "Status Denied"
+    ws['G1'] = "Status On Hold"
+    ws['H1'] = "Status Appointment"
+    for col in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']:
+        ws[f'{col}1'].fill = header_fill
+        ws[f'{col}1'].font = header_font
+
+    row = 2
+    for campaign in sorted(df_filtered['campaign_name'].unique()):
+        df_campaign = df_filtered[df_filtered['campaign_name'] == campaign]
+        client = df_campaign['client_name'].iloc[0] if len(df_campaign) > 0 else 'Unknown'
+
+        ws[f'A{row}'] = str(campaign) if campaign is not None else "Unknown"
+        ws[f'B{row}'] = str(client) if client is not None else "Unknown"
+        ws[f'C{row}'] = int(df_campaign['applicant_id'].nunique())
+        ws[f'D{row}'] = int(len(df_campaign))
+
+        # Statuts - conversion NumPy
+        try:
+            ws[f'E{row}'] = len(df_campaign[df_campaign['status'] == 'new']) if 'status' in df_campaign.columns else 0
+            ws[f'F{row}'] = len(df_campaign[df_campaign['status'] == 'denied']) if 'status' in df_campaign.columns else 0
+            ws[f'G{row}'] = len(df_campaign[df_campaign['status'] == 'on_hold']) if 'status' in df_campaign.columns else 0
+            ws[f'H{row}'] = len(df_campaign[df_campaign['status'] == 'appointment_taken']) if 'status' in df_campaign.columns else 0
+        except:
+            ws[f'E{row}'] = 0
+            ws[f'F{row}'] = 0
+            ws[f'G{row}'] = 0
+            ws[f'H{row}'] = 0
+
+        for col in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']:
+            ws[f'{col}{row}'].border = border
+        row += 1
+
+    # ===== FEUILLE 9: ANALYSE PAR MOIS DÉTAILLÉE =====
+    ws = wb.create_sheet("📅 Détail Mensuel")
+
+    ws['A1'] = "Mois"
+    ws['B1'] = "CVs"
+    ws['C1'] = "Candidatures"
+    ws['D1'] = "Clients"
+    ws['E1'] = "Campagnes"
+    ws['F1'] = "Status New"
+    ws['G1'] = "Status Denied"
+    ws['H1'] = "Status On Hold"
+    ws['I1'] = "Status Appointment"
+    for col in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']:
+        ws[f'{col}1'].fill = header_fill
+        ws[f'{col}1'].font = header_font
+
+    row = 2
+    for month in sorted(df_filtered['month'].dropna().unique()):
+        df_month = df_filtered[df_filtered['month'] == month]
+
+        ws[f'A{row}'] = str(month) if month is not None else "Unknown"
+        ws[f'B{row}'] = int(df_month['applicant_id'].nunique())
+        ws[f'C{row}'] = int(len(df_month))
+        ws[f'D{row}'] = int(df_month['client_name'].nunique())
+        ws[f'E{row}'] = int(df_month['campaign_name'].nunique())
+
+        # Statuts par mois - conversion NumPy
+        try:
+            ws[f'F{row}'] = len(df_month[df_month['status'] == 'new']) if 'status' in df_month.columns else 0
+            ws[f'G{row}'] = len(df_month[df_month['status'] == 'denied']) if 'status' in df_month.columns else 0
+            ws[f'H{row}'] = len(df_month[df_month['status'] == 'on_hold']) if 'status' in df_month.columns else 0
+            ws[f'I{row}'] = len(df_month[df_month['status'] == 'appointment_taken']) if 'status' in df_month.columns else 0
+        except:
+            ws[f'F{row}'] = 0
+            ws[f'G{row}'] = 0
+            ws[f'H{row}'] = 0
+            ws[f'I{row}'] = 0
+
+        for col in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']:
+            ws[f'{col}{row}'].border = border
+        row += 1
 
     # Sauvegarder
     excel_file = f"exports/cabine_cibli_analytics_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
