@@ -4,52 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16e45fce-94eb-4695-8a3b-73261312dd7c" name="Changes" comment="fix: update version numbers and clean up whitespace in multiple files">
+    <list default="true" id="16e45fce-94eb-4695-8a3b-73261312dd7c" name="Changes" comment="feat: update date range and enhance client filtering in analytics script">
+      <change afterPath="$PROJECT_DIR$/ANALYSE_CABINE_DETAILLEE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CHECKLIST_VÉRIFICATION.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CONFIGURATION_GUIDE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EXEMPLE_SORTIE_COMPLÈTE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMPROVEMENTS_STATS.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README_STATS_IMPROVEMENTS.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RÉSUMÉ_CHANGEMENTS.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_api_calls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_ASCII_ART_FINAL.txt" afterPathEscaped="$PROJECT_DIR$/🎉_ASCII_ART_FINAL.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_INDEX_COMPLET.md" afterPathEscaped="$PROJECT_DIR$/📋_INDEX_COMPLET.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_START_HERE.md" afterPathEscaped="$PROJECT_DIR$/🚀_START_HERE.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CLIENTS_DISPONIBLES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CLIENTS_DISPONIBLES.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README_ANALYTICS.md" beforeDir="false" afterPath="$PROJECT_DIR$/README_ANALYTICS.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ats_cibli.py" beforeDir="false" afterPath="$PROJECT_DIR$/ats_cibli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/analytics_2025-09-01_2026-01-14_AllClients_20260114_143249.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/analytics_cabine_cibli_job_2025-09-01_2026-01-14_all_clients_20260114_144605.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabin_stats_report_20260114.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabin_stats_report_20260114_135243.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabin_stats_report_20260114_135537.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabin_stats_report_20260114_135645.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabin_stats_report_20260114_135657.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabin_stats_report_20260114_135842.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabin_stats_report_20260114_135857.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_analytics_STAGING_2025-09-01_2026-01-14_20260115_105309.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_analytics_STAGING_2025-09-01_2026-01-14_20260115_121644.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_analytics_STAGING_2025-09-01_2026-01-14_20260115_121652.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_analytics_STAGING_2025-09-01_2026-01-14_20260115_122330.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_analytics_complet_2025-09-01_2026-01-14_20260115_112033.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_analytics_complet_2025-09-01_2026-01-14_20260115_114135.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_analytics_complet_2025-09-01_2026-01-14_20260115_114343.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_analytics_complet_2025-09-01_2026-01-14_20260115_114641.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260114_150848.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260114_151037.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260114_151056.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260114_151206.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260114_151455.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260114_151627.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260114_151812.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260114_151826.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260114_153332.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260114_153341.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260115_104219.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260115_104301.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260115_120228.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260115_120415.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260115_120439.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260115_122107.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260115_124348.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_20260115_144748.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_cabine_cibli_job_20260114_134149.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_analytics_cabine_cibli_job_20260114_145747.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exports/cabine_cibli_stats_by_client_20260114_145011.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stats/applications/cabine_cibli_job_applications.csv" beforeDir="false" afterPath="$PROJECT_DIR$/stats/applications/cabine_cibli_job_applications.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stats/applications/cabine_cibli_job_applications.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/stats/applications/raw_applications.csv" beforeDir="false" afterPath="$PROJECT_DIR$/stats/applications/raw_applications.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stats/cabin_stats_total_20260114.csv" beforeDir="false" afterPath="$PROJECT_DIR$/stats/cabin_stats_total_20260114.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stats/cabin_stats_total_20260114.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/stats/campaigns/raw_campaigns.csv" beforeDir="false" afterPath="$PROJECT_DIR$/stats/campaigns/raw_campaigns.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stats/stats_cabines.py" beforeDir="false" afterPath="$PROJECT_DIR$/stats/stats_cabines.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +104,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "ai.playground.ignore.import.keys.banner.in.settings": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "dev.sweep.assistant.data.RecentlyUsedFiles": "ats_cibli.py;exports/cabine_cibli_analytics_20260117_140014.xlsx;CLIENTS_DISPONIBLES.txt;RESOLUTION_PYTHON.md;CONFIGURATION_PYTHON.md;run_ats_cibli.sh;requirements.txt;diagnostic_python.sh;README_ANALYTICS.md;SETUP_SUMMARY.md",
+    "dev.sweep.assistant.data.RecentlyUsedFiles": "stats/stats_cabines.py;ats_cibli.py;stats/GUIDE_CLIENTS_OFFRES.md;stats/MODIFICATIONS_v2_1_QUICK.md;stats/MODIFICATIONS_v2_1.md;stats/INDEX_DOCUMENTATION.md;stats/QUICK_START.md;stats/EXEMPLES_CONFIG.md;stats/MODIFICATION_SUMMARY.md;stats/test_configurations.sh",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
@@ -148,7 +123,7 @@
       <recent name="$PROJECT_DIR$/stats" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.ats_cibli">
+  <component name="RunManager" selected="Python.stats_cabines">
     <configuration name="analytics_interactive" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="dataProcessingNotebooks" />
       <option name="ENV_FILES" value="" />
@@ -244,8 +219,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ats_cibli" />
         <item itemvalue="Python.stats_cabines" />
+        <item itemvalue="Python.ats_cibli" />
         <item itemvalue="Python.generate_cabin_stats" />
         <item itemvalue="Python.analytics_interactive" />
       </list>
@@ -326,7 +301,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768495673722</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: update date range and enhance client filtering in analytics script">
+      <option name="closed" value="true" />
+      <created>1768655328567</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1768655328567</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +334,8 @@
     <MESSAGE value="rename cabine_cibli.py to ats_cibli.py and update start date in configuration" />
     <MESSAGE value="fix: update XML encoding for PropertiesComponent in workspace.xml" />
     <MESSAGE value="fix: update version numbers and clean up whitespace in multiple files" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: update version numbers and clean up whitespace in multiple files" />
+    <MESSAGE value="feat: update date range and enhance client filtering in analytics script" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update date range and enhance client filtering in analytics script" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

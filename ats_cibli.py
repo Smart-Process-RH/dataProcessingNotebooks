@@ -36,11 +36,19 @@ print("="*80)
 # Configuration - Modifier ces variables selon vos besoins
 SOURCE_FILTER = "cabine cibli job"  # ← SOURCE À ANALYSER
 DATE_START = "2025-09-11"           # ← DATE DE DÉBUT (YYYY-MM-DD)
-DATE_END = "2026-01-17"             # ← DATE DE FIN (YYYY-MM-DD)
-CLIENT_FILTER = "CRIT INTERIM"               # ← CHOIX CLIENT: "all" pour tous, ou nom spécifique
+DATE_END = "2026-01-31"             # ← DATE DE FIN (YYYY-MM-DD)
+CLIENT_FILTER = "all"               # ← CHOIX CLIENT: "all" pour tous, ou nom spécifique
                                     # Clients disponibles (voir ci-dessous)
 TOP_N_CLIENTS = 15                  # ← Nombre de top clients à afficher
 TOP_N_CAMPAIGNS = 40                # ← Nombre de top campagnes à afficher
+
+# ⏰ STATISTIQUES PAR PÉRIODE (NOUVELLE SECTION)
+MONTH_BY_WEEK = "2026-01"           # ← MOIS POUR ANALYSE PAR SEMAINE (YYYY-MM)
+                                    # Exemple: "2025-12" pour Décembre 2025
+                                    # Laissez vide "" pour désactiver
+MONTH_BY_DAY = "2026-01"            # ← MOIS POUR ANALYSE PAR JOUR (YYYY-MM)
+                                    # Exemple: "2025-12" pour Décembre 2025
+                                    # Laissez vide "" pour désactiver
 
 # Configuration API
 API_URL = "https://api.smart-process-rh.com/v1"
@@ -64,6 +72,8 @@ print(f"   Période: {DATE_START} à {DATE_END}")
 print(f"   Filtre client: {CLIENT_FILTER}")
 print(f"   Top clients: {TOP_N_CLIENTS}")
 print(f"   Top campagnes: {TOP_N_CAMPAIGNS}")
+print(f"   Mois pour analyse par semaine: {MONTH_BY_WEEK if MONTH_BY_WEEK else '(désactivé)'}")
+print(f"   Mois pour analyse par jour: {MONTH_BY_DAY if MONTH_BY_DAY else '(désactivé)'}")
 
 # ============================================================================
 # 📥 ÉTAPE 1 : RÉCUPÉRATION DES DONNÉES DEPUIS L'API
@@ -808,6 +818,158 @@ try:
 
 except Exception as e:
     print(f"\n   ❌ Erreur Excel: {e}")
+
+# ============================================================================
+# 📆 ÉTAPE 11 : ANALYSE PAR SEMAINE (MOIS SPÉCIFIQUE)
+# ============================================================================
+
+if MONTH_BY_WEEK:
+    print("\n" + "="*80)
+    print(f"📆 ANALYSE PAR SEMAINE - {MONTH_BY_WEEK}")
+    print("="*80)
+
+    # Filtrer les données pour le mois spécifié
+    df_week = df_filtered[df_filtered['month'] == MONTH_BY_WEEK].copy()
+
+    if len(df_week) > 0:
+        # Ajouter le numéro de semaine
+        df_week['week'] = df_week['created_at'].dt.isocalendar().week
+        df_week['year'] = df_week['created_at'].dt.isocalendar().year
+
+        print(f"\n   Données trouvées pour {MONTH_BY_WEEK}: {len(df_week)} candidatures\n")
+
+        # Grouper par semaine
+        week_stats = df_week.groupby('week').agg({
+            'applicant_id': 'nunique',
+            'created_at': 'count',
+            'client_name': 'nunique',
+            'campaign_name': 'nunique'
+        }).reset_index()
+
+        week_stats.columns = ['Semaine', 'CVs', 'Candidatures', 'Clients', 'Campagnes']
+
+        for idx, row in week_stats.iterrows():
+            week_num = int(row['Semaine'])
+            cvs = int(row['CVs'])
+            apps = int(row['Candidatures'])
+            clients = int(row['Clients'])
+            campaigns = int(row['Campagnes'])
+
+            # Calculer la plage de dates de la semaine
+            week_data = df_week[df_week['week'] == week_num]
+            if len(week_data) > 0:
+                min_date = week_data['created_at'].min()
+                max_date = week_data['created_at'].max()
+                date_range = f"{min_date.strftime('%Y-%m-%d')} à {max_date.strftime('%Y-%m-%d')}"
+            else:
+                date_range = "N/A"
+
+            print(f"   📅 Semaine {week_num:2d} ({date_range})")
+            print(f"      • CVs: {cvs}")
+            print(f"      • Candidatures: {apps}")
+            print(f"      • Clients: {clients}")
+            print(f"      • Campagnes: {campaigns}")
+
+            # Afficher les clients de cette semaine
+            week_clients = week_data['client_name'].value_counts().head(10)
+            if len(week_clients) > 0:
+                print(f"\n      👥 Top Clients ({len(week_clients)}):")
+                for client, count in week_clients.items():
+                    if pd.notna(client):
+                        print(f"         • {client}: {count} candidature(s)")
+                    else:
+                        print(f"         • (Sans client): {count} candidature(s)")
+
+            # Afficher les offres (campagnes) de cette semaine
+            week_campaigns = week_data['campaign_name'].value_counts().head(10)
+            if len(week_campaigns) > 0:
+                print(f"\n      💼 Top Offres ({len(week_campaigns)}):")
+                for campaign, count in week_campaigns.items():
+                    if pd.notna(campaign):
+                        print(f"         • {campaign}: {count} candidature(s)")
+                    else:
+                        print(f"         • (Sans offre): {count} candidature(s)")
+
+            print()
+
+        # Sauvegarder les statistiques par semaine
+        week_stats.to_csv(f'stats/analysis_by_week_{MONTH_BY_WEEK}.csv', index=False, encoding='utf-8')
+        print(f"   ✅ Statistiques par semaine sauvegardées: stats/analysis_by_week_{MONTH_BY_WEEK}.csv\n")
+    else:
+        print(f"\n   ❌ Aucune donnée trouvée pour le mois: {MONTH_BY_WEEK}\n")
+
+# ============================================================================
+# 📅 ÉTAPE 12 : ANALYSE PAR JOUR (MOIS SPÉCIFIQUE)
+# ============================================================================
+
+if MONTH_BY_DAY:
+    print("\n" + "="*80)
+    print(f"📅 ANALYSE PAR JOUR - {MONTH_BY_DAY}")
+    print("="*80)
+
+    # Filtrer les données pour le mois spécifié
+    df_day = df_filtered[df_filtered['month'] == MONTH_BY_DAY].copy()
+
+    if len(df_day) > 0:
+        # Ajouter le jour du mois
+        df_day['day'] = df_day['created_at'].dt.day
+
+        print(f"\n   Données trouvées pour {MONTH_BY_DAY}: {len(df_day)} candidatures\n")
+
+        # Grouper par jour
+        day_stats = df_day.groupby('day').agg({
+            'applicant_id': 'nunique',
+            'created_at': 'count',
+            'client_name': 'nunique',
+            'campaign_name': 'nunique'
+        }).reset_index()
+
+        day_stats.columns = ['Jour', 'CVs', 'Candidatures', 'Clients', 'Campagnes']
+
+        for idx, row in day_stats.iterrows():
+            day_num = int(row['Jour'])
+            cvs = int(row['CVs'])
+            apps = int(row['Candidatures'])
+            clients = int(row['Clients'])
+            campaigns = int(row['Campagnes'])
+
+            # Créer la date complète
+            full_date = pd.to_datetime(f"{MONTH_BY_DAY}-{day_num:02d}").strftime('%Y-%m-%d')
+
+            print(f"   📅 {full_date}")
+            print(f"      • CVs: {cvs}")
+            print(f"      • Candidatures: {apps}")
+            print(f"      • Clients: {clients}")
+            print(f"      • Campagnes: {campaigns}")
+
+            # Afficher les clients de ce jour
+            day_data = df_day[df_day['day'] == day_num]
+            day_clients = day_data['client_name'].value_counts().head(10)
+            if len(day_clients) > 0:
+                print(f"\n      👥 Top Clients ({len(day_clients)}):")
+                for client, count in day_clients.items():
+                    if pd.notna(client):
+                        print(f"         • {client}: {count} candidature(s)")
+                    else:
+                        print(f"         • (Sans client): {count} candidature(s)")
+
+            # Afficher les offres (campagnes) de ce jour
+            day_campaigns = day_data['campaign_name'].value_counts().head(10)
+            if len(day_campaigns) > 0:
+                print(f"\n      💼 Top Offres ({len(day_campaigns)}):")
+                for campaign, count in day_campaigns.items():
+                    if pd.notna(campaign):
+                        print(f"         • {campaign}: {count} candidature(s)")
+                    else:
+                        print(f"         • (Sans offre): {count} candidature(s)")
+
+            print()
+
+        # Sauvegarder les statistiques par jour
+        day_stats.to_csv(f'stats/analysis_by_day_{MONTH_BY_DAY}.csv', index=False, encoding='utf-8')
+        print(f"   ✅ Statistiques par jour sauvegardées: stats/analysis_by_day_{MONTH_BY_DAY}.csv\n")
+    else:
+        print(f"\n   ❌ Aucune donnée trouvée pour le mois: {MONTH_BY_DAY}\n")
 
 # ============================================================================
 # ✅ RÉSUMÉ FINAL

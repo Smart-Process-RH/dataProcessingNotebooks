@@ -1,380 +1,279 @@
-# 📊 Analyse des Candidatures - Cabine Cibli Job
+# 🎯 ANALYTICS CIBLI - Guide d'exécution
 
-Analyse détaillée des candidatures 'cabine cibli job' avec génération de rapports statistiques complets et exports Excel.
+## ✅ Scripts créés et prêts à l'emploi
 
-**Période d'analyse:** Septembre 2025 - Janvier 2026
+### 1. **ANALYTICS_FINAL.py** ⭐ (À EXÉCUTER EN PREMIER)
+
+Script complet et optimisé qui affiche tous les KPIs demandés.
+
+**Comment l'exécuter:**
+```
+1. Ouvre le fichier ANALYTICS_FINAL.py dans WebStorm
+2. Clique sur le bouton "Run" (icône verte ▶)
+   OU appuie sur Shift+F10
+3. La console en bas affichera la sortie
+```
+
+**Ce qu'il affiche:**
+- ✅ Tous les 10 endpoints API testés
+- ✅ Toutes les données brutes (premiers enregistrements)
+- ✅ Les colonnes de chaque endpoint
+- ✅ Les 5 KPIs calculés avec détails
+
+**Temps d'exécution:** ~5-10 secondes
 
 ---
 
-## 📦 Installation
+### 2. **debug_api.py** (Pour déboguer)
 
-### Prérequis
+Version simplifiée de ANALYTICS_FINAL.py
 
-- Python 3.7+
-- pip ou conda
+---
 
-### Dépendances
+### 3. **analytics_kpis.py** (Pour KPIs détaillés)
 
+Version encore plus détaillée avec analyses approfondies
+
+---
+
+## 📊 Les 5 KPIs à calculer
+
+### 1️⃣ Candidats nouveaux et revenus
+```
+Endpoints utilisés:
+  - GET /candidates?from=DATE_START&to=DATE_END
+  
+Données affichées:
+  - Total candidats
+  - Candidats nouveaux (is_new ou status='new')
+  - Revenu total (si disponible)
+  - Top booths par nombre de candidats
+```
+
+### 2️⃣ Interviews réalisées
+```
+Endpoints utilisés:
+  - GET /interviews?from=DATE_START&to=DATE_END
+  
+Données affichées:
+  - Total interviews
+  - Répartition par statut (completed, pending, etc.)
+```
+
+### 3️⃣ CV créés, téléchargés, imprimés
+```
+Endpoints utilisés:
+  - GET /cvs?from=DATE_START&to=DATE_END
+  - GET /cvs/downloads?from=DATE_START&to=DATE_END
+  - GET /cvs/prints?from=DATE_START&to=DATE_END
+  
+Données affichées:
+  - Nombre de CV créés
+  - Nombre de CV téléchargés
+  - Nombre de CV imprimés
+  - Taux de téléchargement (%)
+  - Taux d'impression (%)
+```
+
+### 4️⃣ Annonces vues (par client, titre, organisation)
+```
+Endpoints utilisés:
+  - GET /job-offers/analytics?from=DATE_START&to=DATE_END
+  
+Données affichées:
+  - Total vues
+  - Top 5 annonces les plus vues
+  - Top 5 organisations les plus consultées
+  - (Par client si disponible dans les données)
+```
+
+### 5️⃣ Candidatures (par organisation, titre)
+```
+Endpoints utilisés:
+  - GET /applications?from=DATE_START&to=DATE_END
+  
+Données affichées:
+  - Total candidatures
+  - Top 5 titres d'annonces les plus postulés
+  - Top 5 organisations les plus postulées
+  - Répartition par statut (submitted, approved, rejected, etc.)
+```
+
+---
+
+## 🔧 Configuration API
+
+**PRODUCTION (actuellement utilisée):**
+```
+URL: https://app-api.ciblijob.fr/api
+Clé: txf.hpc9aut9rbd2KWA
+```
+
+**STAGING (optionnel):**
+```
+URL: https://cibli-api.agency.lonestone.io/api
+Clé: PGZ4qtc5jtf@rph3twf
+```
+
+---
+
+## 📋 Endpoints API disponibles
+
+| N° | Endpoint | Description |
+|----|----------|-------------|
+| 1 | GET /booths/all | Récupère les cabines |
+| 2 | GET /candidates | Candidats |
+| 3 | GET /interviews | Interviews |
+| 4 | GET /cvs | CVs créés |
+| 5 | GET /cvs/downloads | CVs téléchargés |
+| 6 | GET /cvs/prints | CVs imprimés |
+| 7 | GET /job-offers | Offres d'emploi |
+| 8 | GET /applications | Candidatures |
+| 9 | GET /job-offers/analytics | Analytics des offres |
+| 10 | GET /applications/analytics | Analytics des candidatures |
+
+**Paramètres:**
+- `from`: Date de début (format: YYYY-MM-DD)
+- `to`: Date de fin (format: YYYY-MM-DD)
+
+---
+
+## 🚀 Comment exécuter
+
+### Via WebStorm:
+```
+1. Ouvre le fichier ANALYTICS_FINAL.py
+2. Clique sur "Run" (Shift+F10)
+3. Regarde la sortie dans la console
+```
+
+### Via terminal:
 ```bash
-pip install -r requirements.txt
+cd /home/vladkunitsyn/WebstormProjects/dataProcessingNotebooks
+python3 ANALYTICS_FINAL.py
 ```
 
-Ou installez manuellement:
+---
 
+## 📊 Résultat attendu
+
+Le script affichera ceci:
+
+```
+🚀 ANALYTICS DASHBOARD - CIBLI PRODUCTION
+================================================================================
+[HH:MM:SS] API: https://app-api.ciblijob.fr/api
+[HH:MM:SS] Période: 2025-09-01 → 2026-01-19
+
+📥 PHASE 1: RÉCUPÉRATION DES DONNÉES
+...
+
+📊 PHASE 2: DONNÉES BRUTES RÉCUPÉRÉES
+✅ Booths: 50 enregistrements
+✅ Candidates: 1234 enregistrements
+...
+
+📈 PHASE 3: CALCUL DES KPIs
+1️⃣  KPI 1 - CANDIDATS NOUVEAUX & REVENUS
+   Total candidats: 1234
+   Candidats nouveaux: 567
+   Revenu total: €12,345.67
+   Top booths par candidats:
+      • Booth Paris: 234
+      • Booth Lyon: 123
+...
+
+📊 RÉSUMÉ FINAL DES KPIs
+🎯 KPI 1 - Candidats
+   └─ Total: 1234
+🎯 KPI 2 - Interviews
+   └─ Total: 456
+🎯 KPI 3 - CV
+   ├─ Créés: 1234
+   ├─ Téléchargés: 890
+   └─ Imprimés: 456
+🎯 KPI 4 - Annonces vues
+   └─ Total vues: 5678
+🎯 KPI 5 - Candidatures
+   └─ Total: 234
+
+✅ ANALYSE COMPLÈTE
+```
+
+---
+
+## ⚠️ Dépannage
+
+### Le script prend trop de temps
+- C'est normal, l'API peut être lente
+- Timeout configuré à 15 secondes par requête
+
+### "❌ HTTP 404"
+- L'endpoint n'existe pas
+- Vérifier l'URL et la clé API
+
+### "❌ Timeout"
+- Vérifier la connexion internet
+- L'API peut être en maintenance
+
+### Les données sont vides
+- L'endpoint retourne une liste vide
+- C'est possible si aucune donnée pour cette période
+
+---
+
+## 💾 Exporter les résultats
+
+Pour sauvegarder les résultats:
 ```bash
-pip install requests pandas openpyxl numpy
-```
-
-### Environnement virtuel (recommandé)
-
-```bash
-python3 -m venv venv
-source venv/bin/activate  # Linux/macOS
-# ou
-venv\Scripts\activate  # Windows
-pip install -r requirements.txt
+python3 ANALYTICS_FINAL.py > resultats.txt
 ```
 
 ---
 
-## 🚀 Utilisation
+## 📝 Notes importantes
 
-### Option 1 : Script Python (Standalone)
+1. **Configuration dates:**
+   - Début: 2025-09-01
+   - Fin: 2026-01-19
+   - À modifier dans le script si besoin
 
-```bash
-cd /home/vladkunitsyn/PycharmProjects/dataProcessingNotebooks
-source venv/bin/activate
-python3 cabine_cibli_analytics.py
-```
+2. **Environnement:**
+   - Actuellement en PRODUCTION
+   - Pour STAGING, modifier `API_URL` et `API_KEY`
 
-**Avantages:**
-- ✅ Exécution rapide et directe
-- ✅ Pas de dépendance Jupyter
-- ✅ Peut être programmé en cron job
+3. **Données sensibles:**
+   - Les clés API sont hardcodées (à sécuriser en production)
+   - À mettre en variables d'environnement dans un vrai projet
 
-**Résultat:**
-- Rapport complet affichage en console
-- Fichier Excel généré dans `exports/`
-
-### Option 2 : Jupyter Notebook
-
-```bash
-cd /home/vladkunitsyn/PycharmProjects/dataProcessingNotebooks
-source venv/bin/activate
-jupyter notebook stats/cabine_cibli_job_analytics.ipynb
-```
-
-**Avantages:**
-- ✅ Interface interactive
-- ✅ Modification facile des paramètres
-- ✅ Visualisation étape par étape
+4. **Performance:**
+   - ~10 requêtes HTTP
+   - Timeout global: ~150 secondes (15s par requête)
 
 ---
 
-## ⚙️ Configuration
+## ✅ Checklist avant d'exécuter
 
-### Modifier les paramètres
-
-Ouvrez le script ou le notebook et modifiez ces variables:
-
-#### Script (`cabine_cibli_analytics.py`)
-
-```python
-SOURCE_FILTER = "cabine cibli job"  # Source à analyser
-DATE_START = "2025-09-01"           # Date de début (YYYY-MM-DD)
-DATE_END = "2026-01-14"             # Date de fin (YYYY-MM-DD)
-TOP_N_CLIENTS = 10                  # Nombre de top clients
-TOP_N_CAMPAIGNS = 10                # Nombre de top campagnes
-```
-
-#### Notebook (cellule de configuration)
-
-Modifiez les mêmes variables dans la section "⚙️ Étape 2 : Configuration"
-
-### Exemples de configuration
-
-**Analyser une source différente:**
-```python
-SOURCE_FILTER = "hellowork"  # Au lieu de "cabine cibli job"
-```
-
-**Analyser une période différente:**
-```python
-DATE_START = "2025-01-01"
-DATE_END = "2025-12-31"
-```
-
-**Afficher plus de clients/campagnes:**
-```python
-TOP_N_CLIENTS = 20
-TOP_N_CAMPAIGNS = 20
-```
+- [ ] Connexion internet OK
+- [ ] WebStorm ouvert
+- [ ] Fichier ANALYTICS_FINAL.py ouvert
+- [ ] API Key copié correctement
+- [ ] Dates configurées
 
 ---
 
-## 📊 Résultats et Rapports
+## 🎯 Objectif
 
-### Console Output (Exemple)
+Afficher les KPIs suivants en PRODUCTION:
+- ✅ Nombre de candidats nouveaux + revenus
+- ✅ Nombre d'interviews réalisées
+- ✅ CV: créés, téléchargés, imprimés
+- ✅ Annonces vues (par client, titre, organisation)
+- ✅ Candidatures (par organisation, titre)
 
-```
-============================================================
-📊 RÉSUMÉ DES STATISTIQUES DE LA CABINE CIBLI
-============================================================
-
-✓ Nombre total de CV faits: 957
-✓ Nombre total de candidatures: 957
-✓ Nombre de clients avec candidatures: 98
-
-📋 TOP 10 CLIENTS (candidatures):
-    1. E.LECLERC ATLANTIS: 554 candidatures
-    2. Smart Profil: 65 candidatures
-    3. RAS Intérim - Nantes: 35 candidatures
-    ...
-
-📊 RÉPARTITION PAR STATUT:
-  - new: 643 (67.2%)
-  - denied: 265 (27.7%)
-  - on_hold: 46 (4.8%)
-  ...
-```
-
-### Fichier Excel Généré
-
-**Localisation:** `exports/cabine_cibli_analytics_cabine_cibli_job_YYYYMMDD_HHMMSS.xlsx`
-
-**Feuilles incluses:**
-
-1. **📋 Résumé** - Métriques clés
-   - Nombre total de CV
-   - Nombre total de candidatures
-   - Nombre unique de candidats
-   - Nombre de campagnes
-   - Période analysée
-
-2. **🏢 Top Clients** - Classement des clients
-   - Rang
-   - Nom du client
-   - Nombre de candidatures
-
-3. **🎯 Top Campagnes** - Top campagnes
-   - Rang
-   - ID de campagne
-   - Nombre de candidatures
-   - Pourcentage du total
-
-4. **📊 Statuts** - Distribution des statuts
-   - Statut
-   - Nombre
-   - Pourcentage
-
-5. **🌐 Sources** - Distribution des sources
-   - Source
-   - Nombre
-   - Pourcentage
-
-6. **📊 Détails** - Liste complète des candidatures
-   - ID
-   - Statut
-   - Source
-   - Campagne
-   - Candidat
-   - Date de candidature
+**Status: ✅ PRÊT À L'EMPLOI**
 
 ---
 
-## 📋 Étapes du traitement
-
-### 1️⃣ Imports des bibliothèques
-Charge tous les modules Python nécessaires (requests, pandas, openpyxl, etc.)
-
-### 2️⃣ Configuration
-Définit les paramètres de filtrage et les chemins d'accès aux fichiers
-
-### 3️⃣ Récupération des données
-- Charge les candidatures depuis les fichiers locaux CSV
-- Charge les campagnes
-- Charge les données clients
-
-Fallback: Récupère via API si les fichiers locaux ne sont pas disponibles
-
-### 4️⃣ Filtrage et enrichissement
-- Convertit les dates au format datetime
-- Filtre par source (ex: "cabine cibli job")
-- Filtre par plage de dates
-- Enrichit avec données de campagne
-
-### 5️⃣ Calcul des statistiques
-- Nombre total de CV et candidatures
-- Nombre de candidats et campagnes uniques
-- Distribution par statut et source
-- Top clients et top campagnes
-- Analyse temporelle par mois
-
-### 6️⃣ Export Excel
-Crée un fichier Excel structuré avec 6 feuilles
-
----
-
-## 🔧 Troubleshooting
-
-### Erreur: "FileNotFoundError: [Errno 2] No such file or directory"
-
-**Cause:** Les fichiers CSV locaux ne sont pas trouvés
-
-**Solution:**
-1. Vérifiez que vous êtes dans le bon répertoire:
-   ```bash
-   pwd  # Doit afficher: /home/vladkunitsyn/PycharmProjects/dataProcessingNotebooks
-   ```
-2. Vérifiez que les fichiers CSV existent:
-   ```bash
-   ls -la stats/applications/raw_applications.csv
-   ls -la stats/campaigns/raw_campaigns.csv
-   ls -la stats/client_stats.csv
-   ```
-3. Si les fichiers n'existent pas, assurez-vous que l'API est accessible pour le fallback
-
-### Erreur: "ModuleNotFoundError: No module named 'openpyxl'"
-
-**Cause:** Les dépendances ne sont pas installées
-
-**Solution:**
-```bash
-pip install openpyxl pandas requests numpy
-```
-
-### Erreur: "API response 401 Unauthorized"
-
-**Cause:** La clé API est invalide ou expirée
-
-**Solution:**
-1. Vérifiez que `API_KEY` est correct dans le script
-2. Assurez-vous que vous avez accès à l'API
-3. Contactez l'administrateur pour renouveler la clé
-
-### Aucune donnée trouvée après filtrage
-
-**Cause:** La source ou la plage de dates ne contient pas de données
-
-**Solution:**
-1. Vérifiez la valeur de `SOURCE_FILTER`
-2. Vérifiez les dates `DATE_START` et `DATE_END`
-3. Listez les sources disponibles:
-   ```python
-   df = pd.read_csv('stats/applications/raw_applications.csv')
-   print(df['source'].unique())
-   ```
-
----
-
-## 📈 Exemples de rapport
-
-### Exemple 1: Analyser toutes les sources de septembre 2025
-
-Modifiez le script:
-```python
-SOURCE_FILTER = "hellowork"  # Analyser HelloWork au lieu de Cabine Cibli
-DATE_START = "2025-09-01"
-DATE_END = "2025-09-30"
-```
-
-### Exemple 2: Générer un rapport annuel
-
-```python
-DATE_START = "2025-01-01"
-DATE_END = "2025-12-31"
-TOP_N_CLIENTS = 20
-TOP_N_CAMPAIGNS = 15
-```
-
-### Exemple 3: Comparer deux périodes
-
-Exécutez deux fois le script avec des dates différentes:
-```python
-# Première exécution
-DATE_START = "2025-01-01"
-DATE_END = "2025-06-30"
-
-# Deuxième exécution
-DATE_START = "2025-07-01"
-DATE_END = "2025-12-31"
-```
-
----
-
-## 📚 Structure des fichiers
-
-```
-dataProcessingNotebooks/
-├── cabine_cibli_analytics.py          ← Script principal
-├── stats/
-│   ├── cabine_cibli_job_analytics.ipynb ← Notebook Jupyter
-│   ├── applications/
-│   │   └── raw_applications.csv        ← Données des candidatures
-│   ├── campaigns/
-│   │   └── raw_campaigns.csv           ← Données des campagnes
-│   └── client_stats.csv                ← Données des clients
-├── exports/                            ← Dossier des rapports Excel
-│   └── cabine_cibli_analytics_*.xlsx
-├── requirements.txt                    ← Dépendances
-└── venv/                              ← Environnement virtuel
-```
-
----
-
-## 🔐 Sécurité
-
-⚠️ **Important:** La clé API est stockée dans le script. 
-
-**Recommandations:**
-1. Ne jamais commiter la clé API sur GitHub
-2. Stocker la clé dans une variable d'environnement:
-   ```python
-   import os
-   API_KEY = os.getenv('SMART_PROCESS_API_KEY')
-   ```
-3. Utiliser un fichier `.env`:
-   ```bash
-   pip install python-dotenv
-   ```
-   ```python
-   from dotenv import load_dotenv
-   load_dotenv()
-   API_KEY = os.getenv('SMART_PROCESS_API_KEY')
-   ```
-
----
-
-## 📞 Support
-
-Pour toute question ou problème:
-
-1. Consultez le tableau de dépannage (section Troubleshooting)
-2. Vérifiez les logs dans la console
-3. Contactez l'administrateur système
-
----
-
-## 📝 Changelog
-
-### Version 1.0 (2026-01-14)
-
-- ✅ Implémentation initiale du script d'analyse
-- ✅ Création du notebook Jupyter
-- ✅ Export Excel multi-feuilles
-- ✅ Support API et fichiers locaux
-- ✅ Analyse temporelle par mois
-- ✅ Documentation complète
-
----
-
-## 📄 License
-
-Ce projet est confidentiel et réservé à usage interne.
-
----
-
-**Auteur:** Équipe Analytics  
-**Date:** 2026-01-14  
-**Version:** 1.0
+**Bon courage! 🚀**
 

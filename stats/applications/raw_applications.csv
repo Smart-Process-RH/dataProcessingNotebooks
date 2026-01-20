@@ -5917,7 +5917,7 @@ id,status,recordingUrl,notes,tags,slug,source,campaign,applicant,cv,created_at,u
 6802,new,,,[],PUf2anE0vy1W39FkF5e3,hellowork,{'id': 261},{'id': 6904},{'id': 6224},2026-01-16T10:10:43.000Z,2026-01-16T10:10:43.000Z
 6803,new,,,[],vZq5aYII1higbc79O1NL,hellowork,{'id': 261},{'id': 6905},{'id': 6225},2026-01-16T10:18:48.000Z,2026-01-16T10:18:48.000Z
 6804,new,,,[],coGZ7gGYviUDMgt3VV5N,hellowork,{'id': 149},{'id': 6906},{'id': 6226},2026-01-16T11:00:12.000Z,2026-01-16T11:00:12.000Z
-6805,new,,,[],VLkPylVy3yY0E3ZcjDpf,campaign_share,{'id': 332},{'id': 6907},,2026-01-16T12:25:48.000Z,2026-01-16T12:25:48.000Z
+6805,denied,,,[],VLkPylVy3yY0E3ZcjDpf,campaign_share,{'id': 332},{'id': 6907},,2026-01-16T12:25:48.000Z,2026-01-20T08:24:05.000Z
 6806,new,,,[],8qBeiFuEkR3btAgzW49o,hellowork,{'id': 284},{'id': 6908},{'id': 6227},2026-01-16T13:41:38.000Z,2026-01-16T13:41:38.000Z
 6807,new,,,[],RRz0nuocas3EoThScEuu,hellowork,{'id': 285},{'id': 6909},{'id': 6228},2026-01-16T14:18:27.000Z,2026-01-16T14:18:27.000Z
 6808,new,,,[],bLdvqMgfBsOJ48p1GVfK,hellowork,{'id': 258},{'id': 6910},{'id': 6229},2026-01-16T15:32:42.000Z,2026-01-16T15:32:42.000Z
@@ -5939,3 +5939,74 @@ id,status,recordingUrl,notes,tags,slug,source,campaign,applicant,cv,created_at,u
 6824,new,,Applied through Cibli Jobs,[],IeekexarLUdvSFen2fBZ,cabine cibli job,{'id': 330},{'id': 6926},{'id': 6245},2026-01-17T12:12:44.000Z,2026-01-17T12:12:44.000Z
 6825,new,,,[],BatQ7ZS7tY2xRNANkd9b,hellowork,{'id': 200},{'id': 6927},{'id': 6246},2026-01-17T13:46:37.000Z,2026-01-17T13:46:38.000Z
 6826,new,,,[],8Fl9ND1dfQ311kj6QkAc,hellowork,{'id': 328},{'id': 6928},{'id': 6247},2026-01-17T13:52:12.000Z,2026-01-17T13:52:13.000Z
+6827,new,,,[],9lyYGAt7VjiX8jCWgYFY,hellowork,{'id': 280},{'id': 6929},{'id': 6248},2026-01-17T14:07:19.000Z,2026-01-17T14:07:19.000Z
+6828,new,,,[],6CGkC3pmlFwU3eOCgnWs,hellowork,{'id': 281},{'id': 6930},{'id': 6249},2026-01-17T14:41:39.000Z,2026-01-17T14:41:39.000Z
+6829,new,,,[],fdCko8IslWMexf2nlOpg,hellowork,{'id': 281},{'id': 6931},{'id': 6250},2026-01-17T14:53:48.000Z,2026-01-17T14:53:48.000Z
+6830,new,,,[],kRvO1y6VDrRsXi2SVWUW,hellowork,{'id': 285},{'id': 6932},{'id': 6251},2026-01-17T15:45:27.000Z,2026-01-17T15:45:27.000Z
+6831,new,,,[],8d4xzob7OlNfhfmyfyHA,hellowork,{'id': 325},{'id': 6933},{'id': 6252},2026-01-17T20:12:41.000Z,2026-01-17T20:12:41.000Z
+6832,new,,Applied through Cibli Jobs,[],cFJ8BZ2de0eww23ZBC2z,cabine cibli job,{'id': 261},{'id': 6934},{'id': 6253},2026-01-17T19:13:51.000Z,2026-01-17T19:13:51.000Z
+6833,new,,,[],FCNdjikyLGln7EN8d2jk,hellowork,{'id': 274},{'id': 6935},{'id': 6254},2026-01-17T21:07:17.000Z,2026-01-17T21:07:17.000Z
+6834,new,,,[],aNZMXtkPsIXx0aIup8o1,hellowork,{'id': 325},{'id': 6936},{'id': 6255},2026-01-17T21:09:56.000Z,2026-01-17T21:09:56.000Z
+6835,new,,,[],kNpDWQi5PApmIQ6sI5bx,hellowork,{'id': 175},{'id': 6937},{'id': 6256},2026-01-17T22:18:45.000Z,2026-01-17T22:18:45.000Z
+6836,new,,,[],Xeg7SJaOQV1adqsNMrF9,hellowork,{'id': 185},{'id': 6938},,2026-01-17T23:03:07.000Z,2026-01-17T23:03:07.000Z
+6837,new,,,[],VNfPVDKz9E01eqkfSO9f,hellowork,{'id': 319},{'id': 6939},{'id': 6257},2026-01-17T23:36:33.000Z,2026-01-17T23:36:33.000Z
+6838,new,,,[],Rf3g2k20X8mT6S7ER1SM,hellowork,{'id': 277},{'id': 6940},{'id': 6258},2026-01-18T08:40:46.000Z,2026-01-18T08:40:46.000Z
+6839,new,,,[],jNp5Xe4ZtS3yDh3hvgLV,hellowork,{'id': 284},{'id': 6941},{'id': 6259},2026-01-18T10:09:53.000Z,2026-01-18T10:09:53.000Z
+6840,new,,,[],EHa4Z8OJZQSkgC582U4z,hellowork,{'id': 258},{'id': 6942},{'id': 6260},2026-01-18T10:32:43.000Z,2026-01-18T10:32:43.000Z
+6841,new,,,[],YmYs5yEWNn918xNBiNCX,hellowork,{'id': 228},{'id': 6943},{'id': 6261},2026-01-18T10:52:32.000Z,2026-01-18T10:52:32.000Z
+6842,new,,,[],cBQAhGhMwwNKxZP0Kh3C,hellowork,{'id': 258},{'id': 6944},{'id': 6262},2026-01-18T10:57:13.000Z,2026-01-18T10:57:13.000Z
+6843,new,,,[],Gh0umk2TQb5CAe44Q8sa,hellowork,{'id': 285},{'id': 6945},{'id': 6263},2026-01-18T11:22:24.000Z,2026-01-18T11:22:24.000Z
+6844,new,,,[],hSpHDitExFVkwNoat873,hellowork,{'id': 285},{'id': 6946},{'id': 6264},2026-01-18T12:49:47.000Z,2026-01-18T12:49:47.000Z
+6845,new,,,[],vVc57Z05obbanvN269HF,hellowork,{'id': 203},{'id': 6947},{'id': 6265},2026-01-18T13:45:13.000Z,2026-01-18T13:45:13.000Z
+6846,new,,,[],4I13mu5FBacQebJZk6y2,hellowork,{'id': 285},{'id': 6948},{'id': 6266},2026-01-18T13:49:36.000Z,2026-01-18T13:49:36.000Z
+6847,new,,,[],WmRQNnwuPRuTnRJQG6Or,hellowork,{'id': 325},{'id': 6949},{'id': 6267},2026-01-18T15:00:48.000Z,2026-01-18T15:00:48.000Z
+6848,new,,,[],8dSla2VBADnC3FYAjB80,hellowork,{'id': 176},{'id': 6950},{'id': 6268},2026-01-18T16:10:31.000Z,2026-01-18T16:10:31.000Z
+6849,new,,,[],D3PoN5QVFJv1k9P5VrBG,hellowork,{'id': 175},{'id': 6951},{'id': 6269},2026-01-18T17:33:28.000Z,2026-01-18T17:33:28.000Z
+6850,new,,,[],9mqneYyJe4jDHCcSb66o,hellowork,{'id': 289},{'id': 6952},{'id': 6270},2026-01-18T19:10:32.000Z,2026-01-18T19:10:32.000Z
+6851,new,,,[],txqk9lbhVvZjF1uWj3gh,hellowork,{'id': 258},{'id': 6953},{'id': 6271},2026-01-18T20:11:00.000Z,2026-01-18T20:11:00.000Z
+6852,new,,,[],LkVjcssv3oWpd2PMV8bR,hellowork,{'id': 296},{'id': 6954},{'id': 6272},2026-01-18T23:06:59.000Z,2026-01-18T23:06:59.000Z
+6853,new,,,[],xujVhN6EDUTHBJ8WL8pf,hellowork,{'id': 264},{'id': 6955},{'id': 6273},2026-01-19T00:41:15.000Z,2026-01-19T00:41:15.000Z
+6854,new,,,[],2FUPWcO2hs6aQXWrFmFb,hellowork,{'id': 283},{'id': 6956},{'id': 6274},2026-01-19T08:52:53.000Z,2026-01-19T08:52:53.000Z
+6855,new,,,[],TqZohcoHpx2hq1rxEVse,hellowork,{'id': 200},{'id': 6957},{'id': 6275},2026-01-19T10:13:33.000Z,2026-01-19T10:13:33.000Z
+6856,new,,,[],JQMziYA7ongiPiuoiZDn,hellowork,{'id': 258},{'id': 6958},{'id': 6276},2026-01-19T10:57:12.000Z,2026-01-19T10:57:12.000Z
+6857,new,,,[],0QiwmEIU1IfqSkLV41ve,hellowork,{'id': 200},{'id': 6959},{'id': 6277},2026-01-19T12:18:14.000Z,2026-01-19T12:18:14.000Z
+6858,new,,,[],qZjaD29GjEEc9z2WmmOH,hellowork,{'id': 175},{'id': 6960},{'id': 6278},2026-01-19T12:18:15.000Z,2026-01-19T12:18:15.000Z
+6859,new,,,[],3X0gnUUbKyOwRLlsK0u1,hellowork,{'id': 191},{'id': 6961},{'id': 6279},2026-01-19T12:51:04.000Z,2026-01-19T12:51:04.000Z
+6860,new,,,[],Rb9t0IoX4M5LBlclGhN2,hellowork,{'id': 264},{'id': 6962},{'id': 6280},2026-01-19T12:51:55.000Z,2026-01-19T12:51:56.000Z
+6861,new,,,[],QPbYHnj8LF2lhIgIlU2E,hellowork,{'id': 175},{'id': 6963},{'id': 6281},2026-01-19T12:57:07.000Z,2026-01-19T12:57:07.000Z
+6862,new,,,[],UvbtzIIRDb4RTwssONh2,hellowork,{'id': 177},{'id': 6964},{'id': 6282},2026-01-19T13:16:00.000Z,2026-01-19T13:16:00.000Z
+6863,new,,,[],Jyu35QXScEZn5nlOaSpV,hellowork,{'id': 284},{'id': 6965},{'id': 6283},2026-01-19T14:54:52.000Z,2026-01-19T14:54:52.000Z
+6864,new,,,[],pkYZwNdCNAMcNzGO3354,hellowork,{'id': 298},{'id': 6966},{'id': 6284},2026-01-19T15:06:30.000Z,2026-01-19T15:06:30.000Z
+6865,new,,,[],Y7s8ppPGoX7OWhCYEXlN,hellowork,{'id': 284},{'id': 6967},{'id': 6285},2026-01-19T15:15:35.000Z,2026-01-19T15:15:35.000Z
+6866,new,,,[],xhq3YXwsEL498pqmefrD,hellowork,{'id': 259},{'id': 6968},{'id': 6286},2026-01-19T16:05:03.000Z,2026-01-19T16:05:03.000Z
+6867,new,,,[],4GnN98zCeoDcXkgacY4P,hellowork,{'id': 285},{'id': 6969},{'id': 6287},2026-01-19T16:29:13.000Z,2026-01-19T16:29:13.000Z
+6868,new,,,[],YG3hSWrbWeNUhWkgGnfX,hellowork,{'id': 291},{'id': 6970},{'id': 6288},2026-01-19T16:35:16.000Z,2026-01-19T16:35:16.000Z
+6869,new,,,[],y7W0SnDDMUiS1f1ySa0w,hellowork,{'id': 200},{'id': 6971},{'id': 6289},2026-01-19T16:39:17.000Z,2026-01-19T16:39:17.000Z
+6870,new,,,[],D7ftX3GsAYo6t1ifzLCe,hellowork,{'id': 175},{'id': 6972},{'id': 6290},2026-01-19T16:40:05.000Z,2026-01-19T16:40:05.000Z
+6871,new,,,[],DZYsyojFVdjuebLqSmfS,hellowork,{'id': 302},{'id': 6973},{'id': 6291},2026-01-19T17:07:59.000Z,2026-01-19T17:07:59.000Z
+6872,new,,,[],rPTJX4Y9YhjEwR2DE5zP,hellowork,{'id': 289},{'id': 6974},{'id': 6292},2026-01-19T17:18:00.000Z,2026-01-19T17:18:00.000Z
+6873,new,,,[],zvB30TGK9xV8zAqYUCJI,hellowork,{'id': 258},{'id': 6975},{'id': 6293},2026-01-19T17:59:45.000Z,2026-01-19T17:59:46.000Z
+6874,new,,,[],GVG8XArZ93DG77OI4YqP,hellowork,{'id': 264},{'id': 6976},{'id': 6294},2026-01-19T18:24:43.000Z,2026-01-19T18:24:43.000Z
+6875,new,,,[],7CzOftY5QNAs9mad0Ops,hellowork,{'id': 258},{'id': 6977},{'id': 6295},2026-01-19T18:33:12.000Z,2026-01-19T18:33:12.000Z
+6876,new,,,[],RxmSf5RIthChoDxaCXb1,hellowork,{'id': 259},{'id': 6978},{'id': 6296},2026-01-19T18:44:28.000Z,2026-01-19T18:44:28.000Z
+6877,new,,,[],IEBI0Yjl8cPeCz9V6Mmi,hellowork,{'id': 175},{'id': 6979},{'id': 6297},2026-01-19T18:58:44.000Z,2026-01-19T18:58:44.000Z
+6878,new,,,[],64iiU6PEBAmO7wvyVN6n,hellowork,{'id': 258},{'id': 6980},{'id': 6298},2026-01-19T20:18:19.000Z,2026-01-19T20:18:19.000Z
+6879,new,,,[],J5tUKPZKB3u0NvNv3ONb,hellowork,{'id': 325},{'id': 6981},{'id': 6299},2026-01-19T20:43:19.000Z,2026-01-19T20:43:19.000Z
+6880,new,,,[],LI9b3YBEXUU1M9Zgc35R,hellowork,{'id': 175},{'id': 6982},{'id': 6300},2026-01-19T20:47:51.000Z,2026-01-19T20:47:51.000Z
+6881,new,,,[],NQBqWsHkL72lqUFGSqrg,hellowork,{'id': 228},{'id': 6983},{'id': 6301},2026-01-19T21:03:48.000Z,2026-01-19T21:03:48.000Z
+6882,new,,,[],avoU7zTLRszaAkiXaQwv,hellowork,{'id': 291},{'id': 6984},{'id': 6302},2026-01-19T21:19:33.000Z,2026-01-19T21:19:33.000Z
+6883,new,,,[],lGFxQJ4nCBQZo5WnXNof,hellowork,{'id': 295},{'id': 6985},{'id': 6303},2026-01-19T21:49:38.000Z,2026-01-19T21:49:38.000Z
+6884,new,,,[],TNcAYViPZ9VVKpMGtCmT,hellowork,{'id': 175},{'id': 6986},{'id': 6304},2026-01-19T22:39:21.000Z,2026-01-19T22:39:21.000Z
+6885,new,,,[],m25FMoalph33S8QkX0Zu,hellowork,{'id': 321},{'id': 6987},{'id': 6305},2026-01-20T00:22:26.000Z,2026-01-20T00:22:26.000Z
+6886,new,,,[],9Pkj4AgNttYnFE99iOXi,hellowork,{'id': 284},{'id': 6988},{'id': 6306},2026-01-20T02:32:54.000Z,2026-01-20T02:32:54.000Z
+6887,new,,,[],UwFBRL1Qa4KouggXVFbI,hellowork,{'id': 175},{'id': 6989},{'id': 6307},2026-01-20T03:10:26.000Z,2026-01-20T03:10:26.000Z
+6888,new,,,[],RLhPOY45QCRSWJCptS32,hellowork,{'id': 258},{'id': 6990},{'id': 6308},2026-01-20T03:44:24.000Z,2026-01-20T03:44:24.000Z
+6889,new,,,[],o5r6wGk2YZxtaLkJ8I9S,hellowork,{'id': 254},{'id': 6991},{'id': 6309},2026-01-20T04:52:44.000Z,2026-01-20T04:52:44.000Z
+6890,new,,,[],rPHOSfMIMvUkXQuLAXUR,hellowork,{'id': 175},{'id': 6992},{'id': 6310},2026-01-20T06:25:36.000Z,2026-01-20T06:25:36.000Z
+6891,new,,,[],v6GLuNrCCufLOdBiDkUB,hellowork,{'id': 255},{'id': 6993},{'id': 6311},2026-01-20T08:02:22.000Z,2026-01-20T08:02:22.000Z
+6892,new,,,[],KVJZLh6R2RnQ1XVpzraJ,hellowork,{'id': 142},{'id': 6994},{'id': 6312},2026-01-20T08:53:29.000Z,2026-01-20T08:53:29.000Z
+6893,new,,,[],IuC9oi9v1HC3TRzk9Xgl,hellowork,{'id': 325},{'id': 6995},{'id': 6313},2026-01-20T08:54:33.000Z,2026-01-20T08:54:33.000Z
+6894,new,,,[],hlhkxZiRksdgz8aOSBfe,hellowork,{'id': 259},{'id': 6996},{'id': 6314},2026-01-20T09:03:29.000Z,2026-01-20T09:03:29.000Z
+6895,new,,,[],i7ox9NwokRuxp7wceaML,hellowork,{'id': 258},{'id': 6997},{'id': 6315},2026-01-20T09:16:12.000Z,2026-01-20T09:16:12.000Z
+6896,new,,,[],6nIRBjS7TMLzl5LipXBC,hellowork,{'id': 200},{'id': 6998},{'id': 6316},2026-01-20T09:56:35.000Z,2026-01-20T09:56:35.000Z
+6897,new,,,[],rXkVCaey6nkqF8CY4kmn,campaign_share,{'id': 332},{'id': 6999},,2026-01-20T10:05:50.000Z,2026-01-20T10:05:50.000Z
