@@ -4,27 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16e45fce-94eb-4695-8a3b-73261312dd7c" name="Changes" comment="feat: update date range and enhance client filtering in analytics script">
-      <change afterPath="$PROJECT_DIR$/ANALYSE_CABINE_DETAILLEE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CHECKLIST_VÉRIFICATION.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CONFIGURATION_GUIDE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EXEMPLE_SORTIE_COMPLÈTE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMPROVEMENTS_STATS.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README_STATS_IMPROVEMENTS.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RÉSUMÉ_CHANGEMENTS.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_api_calls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_ASCII_ART_FINAL.txt" afterPathEscaped="$PROJECT_DIR$/🎉_ASCII_ART_FINAL.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_INDEX_COMPLET.md" afterPathEscaped="$PROJECT_DIR$/📋_INDEX_COMPLET.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_START_HERE.md" afterPathEscaped="$PROJECT_DIR$/🚀_START_HERE.md" afterDir="false" />
+    <list default="true" id="16e45fce-94eb-4695-8a3b-73261312dd7c" name="Changes" comment="feat: update date range and add weekly and daily analysis features in ats_cibli.py">
+      <change afterPath="$PROJECT_DIR$/AMÉLIORATIONS_SCRIPT.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DÉMARRAGE_ANALYSE_CABINE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DÉMARRAGE_RAPIDE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUIDE_ANALYSE_CABINE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUIDE_ANALYTICS_SCRIPT.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUIDE_EXPORT_API_MD.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/INFORMATIONS_EXTRACTIBLES.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PROBLÈME_RÉSOLU.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README_SCRIPTS_ANALYTICS.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RESUME_VISUAL.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RÉCAPITULATIF_COMPLET.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TABLEAU_ENDPOINTS.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analyse_cabine_v3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analyse_par_cabine.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics_exploration.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exemples_analyses.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/export_api_quick.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/export_api_vers_md.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fetch_analytics_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/generer_metriques_md.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/get_metriques_generales.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quick_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run_analytics_fetch.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_connection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_debug_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CLIENTS_DISPONIBLES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CLIENTS_DISPONIBLES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README_ANALYTICS.md" beforeDir="false" afterPath="$PROJECT_DIR$/README_ANALYTICS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ats_cibli.py" beforeDir="false" afterPath="$PROJECT_DIR$/ats_cibli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stats/applications/cabine_cibli_job_applications.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/INDEX.md" beforeDir="false" afterPath="$PROJECT_DIR$/INDEX.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RENOMMAGE_BRANCHE_RAPPORT.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RESOLUTION_PYTHON.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stats/README_STATS_CABINES.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/stats/applications/raw_applications.csv" beforeDir="false" afterPath="$PROJECT_DIR$/stats/applications/raw_applications.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stats/cabin_stats_total_20260114.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/stats/campaigns/raw_campaigns.csv" beforeDir="false" afterPath="$PROJECT_DIR$/stats/campaigns/raw_campaigns.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stats/stats_cabines.py" beforeDir="false" afterPath="$PROJECT_DIR$/stats/stats_cabines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stats/config_examples.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stats/stats_cabines.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,9 +108,12 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.analyse_par_cabine.executor": "Run",
     "Python.analytics_interactive.executor": "Run",
     "Python.ats_cibli.executor": "Run",
     "Python.cabine_cibli.executor": "Run",
+    "Python.cibli_analytics.executor": "Run",
+    "Python.cibli_analytics_standalone.executor": "Run",
     "Python.generate_cabin_stats.executor": "Run",
     "Python.stats_cabines.executor": "Run",
     "RunOnceActivity.MCP Project settings loaded": "true",
@@ -104,7 +123,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "ai.playground.ignore.import.keys.banner.in.settings": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "dev.sweep.assistant.data.RecentlyUsedFiles": "stats/stats_cabines.py;ats_cibli.py;stats/GUIDE_CLIENTS_OFFRES.md;stats/MODIFICATIONS_v2_1_QUICK.md;stats/MODIFICATIONS_v2_1.md;stats/INDEX_DOCUMENTATION.md;stats/QUICK_START.md;stats/EXEMPLES_CONFIG.md;stats/MODIFICATION_SUMMARY.md;stats/test_configurations.sh",
+    "dev.sweep.assistant.data.RecentlyUsedFiles": "analyse_par_cabine.py;ats_cibli.py;PROBLÈME_RÉSOLU.md;analyse_cabine_v3.py;AMÉLIORATIONS_SCRIPT.md;generer_metriques_md.py;get_metriques_generales.py;GUIDE_EXPORT_API_MD.md;export_api_quick.py;export_api_vers_md.py",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
@@ -123,8 +142,8 @@
       <recent name="$PROJECT_DIR$/stats" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.stats_cabines">
-    <configuration name="analytics_interactive" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.analyse_par_cabine">
+    <configuration name="analyse_par_cabine" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="dataProcessingNotebooks" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -138,7 +157,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analytics_interactive.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analyse_par_cabine.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -171,7 +190,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="generate_cabin_stats" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="cibli_analytics" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="dataProcessingNotebooks" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -185,7 +204,30 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generate_cabin_stats.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cibli_analytics.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="cibli_analytics_standalone" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="dataProcessingNotebooks" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cibli_analytics_standalone.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -219,10 +261,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.stats_cabines" />
+        <item itemvalue="Python.analyse_par_cabine" />
         <item itemvalue="Python.ats_cibli" />
-        <item itemvalue="Python.generate_cabin_stats" />
-        <item itemvalue="Python.analytics_interactive" />
+        <item itemvalue="Python.cibli_analytics" />
+        <item itemvalue="Python.cibli_analytics_standalone" />
+        <item itemvalue="Python.stats_cabines" />
       </list>
     </recent_temporary>
   </component>
@@ -309,7 +352,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768655328567</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat: update date range and add weekly and daily analysis features in ats_cibli.py">
+      <option name="closed" value="true" />
+      <created>1768922088939</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1768922088939</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,7 +386,8 @@
     <MESSAGE value="fix: update XML encoding for PropertiesComponent in workspace.xml" />
     <MESSAGE value="fix: update version numbers and clean up whitespace in multiple files" />
     <MESSAGE value="feat: update date range and enhance client filtering in analytics script" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: update date range and enhance client filtering in analytics script" />
+    <MESSAGE value="feat: update date range and add weekly and daily analysis features in ats_cibli.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update date range and add weekly and daily analysis features in ats_cibli.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
